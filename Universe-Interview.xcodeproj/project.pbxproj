@@ -15,6 +15,25 @@
 		7677A8F0249E3881001D4FE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7677A8EE249E3881001D4FE6 /* LaunchScreen.storyboard */; };
 		7677A8FB249E3881001D4FE6 /* Universe_InterviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A8FA249E3881001D4FE6 /* Universe_InterviewTests.swift */; };
 		7677A906249E3881001D4FE6 /* Universe_InterviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A905249E3881001D4FE6 /* Universe_InterviewUITests.swift */; };
+		7677A917249E39D1001D4FE6 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A916249E39D1001D4FE6 /* PostsTableViewController.swift */; };
+		7677A91C249E3AC9001D4FE6 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A91B249E3AC9001D4FE6 /* PostTableViewCell.swift */; };
+		7677A91E249E3B4F001D4FE6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A91D249E3B4F001D4FE6 /* Post.swift */; };
+		7677A920249E3D4B001D4FE6 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A91F249E3D4B001D4FE6 /* PostsViewModel.swift */; };
+		7677A923249E3D91001D4FE6 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A922249E3D91001D4FE6 /* ErrorViewController.swift */; };
+		7677A925249E3DDA001D4FE6 /* RetryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A924249E3DDA001D4FE6 /* RetryDelegate.swift */; };
+		7677A927249E3E7D001D4FE6 /* UniverseBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A926249E3E7D001D4FE6 /* UniverseBaseTableViewController.swift */; };
+		7677A92B249E3FCD001D4FE6 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A92A249E3FCD001D4FE6 /* PostDetailsViewController.swift */; };
+		7677A92D249E40C0001D4FE6 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A92C249E40C0001D4FE6 /* PostService.swift */; };
+		7677A930249E46F8001D4FE6 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A92F249E46F8001D4FE6 /* ServiceError.swift */; };
+		7677A932249E47C1001D4FE6 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A931249E47C1001D4FE6 /* URLSession+Extension.swift */; };
+		7677A938249E6616001D4FE6 /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A937249E6616001D4FE6 /* CommentsTableViewController.swift */; };
+		7677A93A249E6648001D4FE6 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A939249E6648001D4FE6 /* Comment.swift */; };
+		7677A93C249E67C3001D4FE6 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A93B249E67C3001D4FE6 /* CommentsViewModel.swift */; };
+		7677A93E249E67EE001D4FE6 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A93D249E67EE001D4FE6 /* CommentTableViewCell.swift */; };
+		7677A940249E6D56001D4FE6 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A93F249E6D56001D4FE6 /* CommentService.swift */; };
+		7677A942249E75DF001D4FE6 /* ServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A941249E75DF001D4FE6 /* ServiceClient.swift */; };
+		7677A946249E7EEC001D4FE6 /* UIview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A945249E7EEC001D4FE6 /* UIview+Extension.swift */; };
+		7677A949249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A948249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +68,25 @@
 		7677A901249E3881001D4FE6 /* Universe-InterviewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Universe-InterviewUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7677A905249E3881001D4FE6 /* Universe_InterviewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universe_InterviewUITests.swift; sourceTree = "<group>"; };
 		7677A907249E3881001D4FE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7677A916249E39D1001D4FE6 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		7677A91B249E3AC9001D4FE6 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		7677A91D249E3B4F001D4FE6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		7677A91F249E3D4B001D4FE6 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		7677A922249E3D91001D4FE6 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		7677A924249E3DDA001D4FE6 /* RetryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryDelegate.swift; sourceTree = "<group>"; };
+		7677A926249E3E7D001D4FE6 /* UniverseBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseBaseTableViewController.swift; sourceTree = "<group>"; };
+		7677A92A249E3FCD001D4FE6 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
+		7677A92C249E40C0001D4FE6 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		7677A92F249E46F8001D4FE6 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		7677A931249E47C1001D4FE6 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
+		7677A937249E6616001D4FE6 /* CommentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
+		7677A939249E6648001D4FE6 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		7677A93B249E67C3001D4FE6 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		7677A93D249E67EE001D4FE6 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		7677A93F249E6D56001D4FE6 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		7677A941249E75DF001D4FE6 /* ServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceClient.swift; sourceTree = "<group>"; };
+		7677A945249E7EEC001D4FE6 /* UIview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIview+Extension.swift"; sourceTree = "<group>"; };
+		7677A948249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPostsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +137,10 @@
 		7677A8E2249E387E001D4FE6 /* Universe-Interview */ = {
 			isa = PBXGroup;
 			children = (
+				7677A947249E98A7001D4FE6 /* AuthorPosts */,
+				7677A929249E3FB3001D4FE6 /* PostDetails */,
+				7677A928249E3FA6001D4FE6 /* Home */,
+				7677A918249E3A48001D4FE6 /* Common */,
 				7677A8E3249E387E001D4FE6 /* AppDelegate.swift */,
 				7677A8E5249E387E001D4FE6 /* SceneDelegate.swift */,
 				7677A8E7249E387E001D4FE6 /* ViewController.swift */,
@@ -126,6 +168,93 @@
 				7677A907249E3881001D4FE6 /* Info.plist */,
 			);
 			path = "Universe-InterviewUITests";
+			sourceTree = "<group>";
+		};
+		7677A913249E388F001D4FE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7677A916249E39D1001D4FE6 /* PostsTableViewController.swift */,
+				7677A91B249E3AC9001D4FE6 /* PostTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7677A914249E3898001D4FE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7677A91D249E3B4F001D4FE6 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7677A915249E389C001D4FE6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7677A91F249E3D4B001D4FE6 /* PostsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7677A918249E3A48001D4FE6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7677A921249E3D6F001D4FE6 /* ErrorView */,
+				7677A926249E3E7D001D4FE6 /* UniverseBaseTableViewController.swift */,
+				7677A92F249E46F8001D4FE6 /* ServiceError.swift */,
+				7677A931249E47C1001D4FE6 /* URLSession+Extension.swift */,
+				7677A941249E75DF001D4FE6 /* ServiceClient.swift */,
+				7677A945249E7EEC001D4FE6 /* UIview+Extension.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7677A921249E3D6F001D4FE6 /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				7677A924249E3DDA001D4FE6 /* RetryDelegate.swift */,
+				7677A922249E3D91001D4FE6 /* ErrorViewController.swift */,
+			);
+			path = ErrorView;
+			sourceTree = "<group>";
+		};
+		7677A928249E3FA6001D4FE6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7677A915249E389C001D4FE6 /* ViewModel */,
+				7677A914249E3898001D4FE6 /* Model */,
+				7677A913249E388F001D4FE6 /* View */,
+				7677A92C249E40C0001D4FE6 /* PostService.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7677A929249E3FB3001D4FE6 /* PostDetails */ = {
+			isa = PBXGroup;
+			children = (
+				7677A943249E760B001D4FE6 /* Comments */,
+				7677A92A249E3FCD001D4FE6 /* PostDetailsViewController.swift */,
+			);
+			path = PostDetails;
+			sourceTree = "<group>";
+		};
+		7677A943249E760B001D4FE6 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				7677A93D249E67EE001D4FE6 /* CommentTableViewCell.swift */,
+				7677A93B249E67C3001D4FE6 /* CommentsViewModel.swift */,
+				7677A939249E6648001D4FE6 /* Comment.swift */,
+				7677A93F249E6D56001D4FE6 /* CommentService.swift */,
+				7677A937249E6616001D4FE6 /* CommentsTableViewController.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		7677A947249E98A7001D4FE6 /* AuthorPosts */ = {
+			isa = PBXGroup;
+			children = (
+				7677A948249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift */,
+			);
+			path = AuthorPosts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +388,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7677A949249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift in Sources */,
 				7677A8E8249E387E001D4FE6 /* ViewController.swift in Sources */,
+				7677A91C249E3AC9001D4FE6 /* PostTableViewCell.swift in Sources */,
+				7677A932249E47C1001D4FE6 /* URLSession+Extension.swift in Sources */,
 				7677A8E4249E387E001D4FE6 /* AppDelegate.swift in Sources */,
+				7677A927249E3E7D001D4FE6 /* UniverseBaseTableViewController.swift in Sources */,
+				7677A91E249E3B4F001D4FE6 /* Post.swift in Sources */,
 				7677A8E6249E387E001D4FE6 /* SceneDelegate.swift in Sources */,
+				7677A923249E3D91001D4FE6 /* ErrorViewController.swift in Sources */,
+				7677A938249E6616001D4FE6 /* CommentsTableViewController.swift in Sources */,
+				7677A92D249E40C0001D4FE6 /* PostService.swift in Sources */,
+				7677A946249E7EEC001D4FE6 /* UIview+Extension.swift in Sources */,
+				7677A942249E75DF001D4FE6 /* ServiceClient.swift in Sources */,
+				7677A930249E46F8001D4FE6 /* ServiceError.swift in Sources */,
+				7677A93A249E6648001D4FE6 /* Comment.swift in Sources */,
+				7677A925249E3DDA001D4FE6 /* RetryDelegate.swift in Sources */,
+				7677A93E249E67EE001D4FE6 /* CommentTableViewCell.swift in Sources */,
+				7677A917249E39D1001D4FE6 /* PostsTableViewController.swift in Sources */,
+				7677A920249E3D4B001D4FE6 /* PostsViewModel.swift in Sources */,
+				7677A92B249E3FCD001D4FE6 /* PostDetailsViewController.swift in Sources */,
+				7677A940249E6D56001D4FE6 /* CommentService.swift in Sources */,
+				7677A93C249E67C3001D4FE6 /* CommentsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
