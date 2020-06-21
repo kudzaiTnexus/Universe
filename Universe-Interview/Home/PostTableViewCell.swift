@@ -14,10 +14,10 @@ class PostTableViewCell: UITableViewCell {
     
     private var postNumberLabel: UILabel = {
         
-        let label = UILabel()
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.numberOfLines = 0
+        let label = UILabel().universeLabel(with: CGFloat(16),
+                                            color: .white,
+                                            fontWeight: .semibold)
+        
         label.textAlignment = .center
         label.widthAnchor.constraint(equalToConstant: 40).isActive = true
         label.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -33,20 +33,18 @@ class PostTableViewCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.numberOfLines = 0
-        
+        let label = UILabel().universeLabel(with: CGFloat(16),
+                                            color: .black,
+                                            fontWeight: .semibold)
         return label
     }()
     
     private let bodyLabel: UILabel = {
         
-        let label = UILabel()
-        label.textColor = .gray
-        label.font = .systemFont(ofSize: 12, weight: .regular)
-        label.numberOfLines = 0
+        let label = UILabel().universeLabel(with: CGFloat(12),
+                                            color: .gray,
+                                            fontWeight: .regular)
+        
         label.textAlignment = .justified
         label.lineBreakMode = .byWordWrapping
         
@@ -125,10 +123,11 @@ extension PostTableViewCell {
         
     }
     
-    func configureView(with post: Post ,and index: IndexPath) {
+    func configureView(with post: Post ,index: IndexPath, color: UIColor) {
         self.titleLabel.text = post.title.capitalized
         self.bodyLabel.text = post.body
-        self.postNumberLabel.text = String(index.row)
+        self.postNumberLabel.text = String(index.row+1)
+        self.postNumberLabel.backgroundColor = color
     }
     
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		764D2442249F12B7002E4B82 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764D2441249F12B7002E4B82 /* Reachability.swift */; };
 		764D2444249F2028002E4B82 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 764D2443249F2028002E4B82 /* Localizable.strings */; };
+		764D2452249F6AAB002E4B82 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764D2451249F6AAB002E4B82 /* UILabel+Extension.swift */; };
 		7677A8E4249E387E001D4FE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A8E3249E387E001D4FE6 /* AppDelegate.swift */; };
 		7677A8E6249E387E001D4FE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A8E5249E387E001D4FE6 /* SceneDelegate.swift */; };
 		7677A8E8249E387E001D4FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A8E7249E387E001D4FE6 /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		764D2441249F12B7002E4B82 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		764D2443249F2028002E4B82 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		764D2451249F6AAB002E4B82 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		7677A8E0249E387E001D4FE6 /* Universe-Interview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Universe-Interview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7677A8E3249E387E001D4FE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7677A8E5249E387E001D4FE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				7677A941249E75DF001D4FE6 /* ServiceClient.swift */,
 				7677A945249E7EEC001D4FE6 /* UIview+Extension.swift */,
 				764D2441249F12B7002E4B82 /* Reachability.swift */,
+				764D2451249F6AAB002E4B82 /* UILabel+Extension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				7677A927249E3E7D001D4FE6 /* UniverseBaseTableViewController.swift in Sources */,
 				7677A91E249E3B4F001D4FE6 /* Post.swift in Sources */,
 				7677A8E6249E387E001D4FE6 /* SceneDelegate.swift in Sources */,
+				764D2452249F6AAB002E4B82 /* UILabel+Extension.swift in Sources */,
 				7677A923249E3D91001D4FE6 /* ErrorViewController.swift in Sources */,
 				7677A938249E6616001D4FE6 /* CommentsTableViewController.swift in Sources */,
 				7677A92D249E40C0001D4FE6 /* PostService.swift in Sources */,

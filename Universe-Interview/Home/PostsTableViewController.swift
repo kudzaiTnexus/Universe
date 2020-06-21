@@ -52,7 +52,6 @@ class PostsTableViewController: UniverseBaseTableViewController {
                 self.posts = posts
                 self.hideActivityIndicator()
             case .failure(let error):
-                self.hideActivityIndicator()
                 self.showErrorView(with: error.message)
                 self.hideActivityIndicator()
             }
@@ -80,7 +79,7 @@ class PostsTableViewController: UniverseBaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let postCell = tableView.dequeueReusableCell(withIdentifier: "\(PostTableViewCell.self)", for: indexPath) as! PostTableViewCell
-        postCell.configureView(with: posts[indexPath.row], and: indexPath)
+        postCell.configureView(with: posts[indexPath.row], index: indexPath, color: UIColor.orange)
         return postCell
     }
     

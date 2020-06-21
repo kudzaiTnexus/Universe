@@ -44,8 +44,8 @@ class CommentsTableViewController: UniverseBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.showsVerticalScrollIndicator = false
         self.tableView.separatorStyle = .none
-        self.title = "Posts"
         self.registerTableViewCells()
         
         self.errorViewController.delegate = self
@@ -65,7 +65,6 @@ class CommentsTableViewController: UniverseBaseTableViewController {
                 self.comments = comments
                 self.hideActivityIndicator()
             case .failure(let error):
-                self.hideActivityIndicator()
                 self.showErrorView(with: error.message)
                 self.hideActivityIndicator()
             }
@@ -83,13 +82,20 @@ class CommentsTableViewController: UniverseBaseTableViewController {
     // MARK: - Table view data source and delegate calls
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let dividerView = UIView(frame: .zero)
+        dividerView.heightAnchor.constraint(equalToConstant: 8).isActive = true
+        
+        return dividerView
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let commentCell = tableView.dequeueReusableCell(withIdentifier: "\(CommentTableViewCell.self)", for: indexPath) as! CommentTableViewCell

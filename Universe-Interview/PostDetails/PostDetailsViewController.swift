@@ -17,10 +17,10 @@ class PostDetailsViewController: UIViewController {
     
     private var postNumberLabel: UILabel = {
         
-        let label = UILabel()
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.numberOfLines = 0
+        let label = UILabel().universeLabel(with: CGFloat(16),
+                                            color: .white,
+                                            fontWeight: .semibold)
+        
         label.textAlignment = .center
         label.widthAnchor.constraint(equalToConstant: 40).isActive = true
         label.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -29,7 +29,7 @@ class PostDetailsViewController: UIViewController {
         label.layer.masksToBounds = true
         label.layer.borderColor = UIColor.red.cgColor
         label.layer.borderWidth = 1.0
-        label.backgroundColor = UIColor.orange
+        label.backgroundColor = UIColor.purple.withAlphaComponent(0.6)
         
          label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -38,22 +38,17 @@ class PostDetailsViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.numberOfLines = 0
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
+        let label = UILabel().universeLabel(with: CGFloat(16),
+                                            color: .black,
+                                            fontWeight: .semibold)
         return label
     }()
     
     private let bodyLabel: UILabel = {
         
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 16, weight: .ultraLight)
-        label.numberOfLines = 0
+        let label = UILabel().universeLabel(with: CGFloat(16),
+                                            color: .darkGray,
+                                            fontWeight: .ultraLight)
         label.textAlignment = .justified
         label.lineBreakMode = .byWordWrapping
         
@@ -72,13 +67,13 @@ class PostDetailsViewController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 30).isActive = true
         button.layer.cornerRadius = 8
         button.tintColor = .white
-        button.backgroundColor = UIColor.orange.withAlphaComponent(0.8)
+        button.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         button.setTitle(NSLocalizedString("showmore.title", comment: ""), for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
         button.layer.shadowRadius = 2.0
-        button.layer.shadowColor = UIColor.lightGray.cgColor
-        button.layer.shadowOpacity = 0.3
+        button.layer.shadowColor = UIColor.darkGray.cgColor
+        button.layer.shadowOpacity = 0.5
         button.addTarget(self, action: #selector(onShowMoreButtonTap), for: .touchUpInside)
         
         return button
@@ -168,7 +163,7 @@ extension PostDetailsViewController {
         commentsView.translatesAutoresizingMaskIntoConstraints = false
         commentsView.topAnchor.constraint(equalTo: self.horizontalStackView.layoutMarginsGuide.bottomAnchor, constant: 16).isActive = true
         commentsView.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor).isActive = true
-        commentsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        commentsView.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor).isActive = true
         commentsView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         self.commentsTableViewController.tableView.layoutPinToSuperviewEdges()
@@ -176,7 +171,7 @@ extension PostDetailsViewController {
     }
     
     func configureViewWith(post: Post, and index: Int) {
-        self.postNumberLabel.text = String(index)
+        self.postNumberLabel.text = String(index+1)
         self.titleLabel.text = post.title.capitalized
         self.bodyLabel.text = post.body
         self.post = post

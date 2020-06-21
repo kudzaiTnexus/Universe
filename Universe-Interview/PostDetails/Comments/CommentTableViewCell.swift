@@ -34,30 +34,26 @@ class CommentTableViewCell: UITableViewCell {
     
     private var authorNameLabel: UILabel = {
         
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 14, weight: .semibold)
-        label.numberOfLines = 0
+        let label = UILabel().universeLabel(with: CGFloat(14),
+                                            color: .black,
+                                            fontWeight: .semibold)
         
         return label
     }()
     
     private let authorEmailLabel: UILabel = {
-        
-        let label = UILabel()
-        label.textColor = UIColor.blue.withAlphaComponent(0.8)
-        label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.numberOfLines = 0
-        
+        let label = UILabel().universeLabel(with: CGFloat(12),
+                                            color:  UIColor.blue.withAlphaComponent(0.8),
+                                            fontWeight: .semibold)
         return label
     }()
     
     private let commentBodyLabel: UILabel = {
         
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 12, weight: .light)
-        label.numberOfLines = 0
+        let label = UILabel().universeLabel(with: CGFloat(12),
+                                            color: .black,
+                                            fontWeight: .light)
+        
         label.textAlignment = .justified
         label.lineBreakMode = .byWordWrapping
         

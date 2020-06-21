@@ -43,12 +43,22 @@ class UserPostsTableViewController: UniverseBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "home"),
+                                                      style: .done, target: self,
+                                                      action: #selector(goToRootView))
+
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
         self.title = String(format: NSLocalizedString("user.posts", comment: ""), String(userId))
         
         self.tableView.separatorStyle = .none
         self.registerTableViewCells()
         
         self.errorViewController.delegate = self
+    }
+    
+    @objc func goToRootView() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     // MARK: - Service Call
@@ -63,7 +73,6 @@ class UserPostsTableViewController: UniverseBaseTableViewController {
                 self.posts = posts
                 self.hideActivityIndicator()
             case .failure(let error):
-                self.hideActivityIndicator()
                 self.showErrorView(with: error.message)
                 self.hideActivityIndicator()
             }
@@ -89,7 +98,7 @@ class UserPostsTableViewController: UniverseBaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let postCell = tableView.dequeueReusableCell(withIdentifier: "\(PostTableViewCell.self)", for: indexPath) as! PostTableViewCell
-        postCell.configureView(with: posts[indexPath.row], and: indexPath)
+        postCell.configureView(with: posts[indexPath.row], index: indexPath, color: UIColor.purple.withAlphaComponent(0.6))
         return postCell
     }
     
