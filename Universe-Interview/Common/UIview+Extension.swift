@@ -10,29 +10,6 @@ import UIKit
 
 extension UIView {
     
-    func layoutPinToSuperviewMargins(top: Bool = true,
-                                         leading: Bool = true,
-                                         bottom: Bool = true,
-                                         trailing: Bool = true,
-                                         insets: UIEdgeInsets = UIEdgeInsets.zero) {
-        
-        translatesAutoresizingMaskIntoConstraints = false
-
-        if top {
-            topAnchor.constraint(equalTo: superview!.layoutMarginsGuide.topAnchor, constant: insets.top).isActive = true
-        }
-        if leading {
-            leadingAnchor.constraint(equalTo: superview!.layoutMarginsGuide.leadingAnchor, constant: insets.left).isActive = true
-        }
-        if bottom {
-            bottomAnchor.constraint(equalTo: superview!.layoutMarginsGuide.bottomAnchor, constant: -insets.bottom).isActive = true
-        }
-        if trailing {
-            trailingAnchor.constraint(equalTo: superview!.layoutMarginsGuide.trailingAnchor, constant: -insets.right).isActive = true
-        }
-    }
-
-    
     func layoutPinToSuperviewEdges(top: Bool = true, leading: Bool = true, bottom: Bool = true, trailing: Bool = true, insets: UIEdgeInsets = UIEdgeInsets.zero) {
         
         translatesAutoresizingMaskIntoConstraints = false

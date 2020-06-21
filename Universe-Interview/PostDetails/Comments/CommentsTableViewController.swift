@@ -9,16 +9,26 @@
 import UIKit
 
 class CommentsTableViewController: UniverseBaseTableViewController {
-
-    var post: Post!
+    
+    private var postId: String!
     
     private let viewModel = CommentsViewModel()
-    private lazy var errorViewController = ErrorViewController()
     
     private var comments: [Comment] = [] {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    // MARK: - View Life cycle
+    
+    init(with postId: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.postId = postId
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func registerTableViewCells() {
@@ -34,8 +44,6 @@ class CommentsTableViewController: UniverseBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.hidesBackButton = true
-        
         self.tableView.separatorStyle = .none
         self.title = "Posts"
         self.registerTableViewCells()
@@ -45,25 +53,34 @@ class CommentsTableViewController: UniverseBaseTableViewController {
         self.fetchComments()
     }
     
+    // MARK: - Service Call
+    
     func fetchComments() {
         self.showActivityIndicator()
         
-        self.viewModel.fetchComments(for: String(post.id)) { result in
+        self.viewModel.fetchComments(for: postId) { result in
             switch result {
-                 
+                
             case .success(let comments):
                 self.comments = comments
                 self.hideActivityIndicator()
-            case .failure( _):
+            case .failure(let error):
                 self.hideActivityIndicator()
-                self.showErrorView()
+                self.showErrorView(with: error.message)
                 self.hideActivityIndicator()
             }
-
+            
         }
     }
     
-    // MARK: - Table view data source
+    // MARK: - Error Handling
+    
+    override func onRetryTap() {
+        self.hideErrorView()
+        self.fetchComments()
+    }
+    
+    // MARK: - Table view data source and delegate calls
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -80,32 +97,12 @@ class CommentsTableViewController: UniverseBaseTableViewController {
         return commentCell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailsViewContoller = PostDetailsViewController()
-//        detailsViewContoller.configureViewWith(post: posts[indexPath.row], and: indexPath.row)
-//        self.navigationController?.pushViewController(detailsViewContoller, animated: true)
-//    }
-
-}
-
-extension CommentsTableViewController: RetryDelegate {
-    
-    func onRetryTap() {
-        self.hideErrorView()
-        self.fetchComments()
-    }
-    
-    func showErrorView() {
-        self.addChild(errorViewController)
-        self.errorViewController.view.frame = view.bounds
-        self.view.addSubview(errorViewController.view)
-        self.view.bringSubviewToFront(errorViewController.view)
-        self.errorViewController.didMove(toParent: self)
-    }
-    
-    func hideErrorView() {
-        self.errorViewController.willMove(toParent: nil)
-        self.errorViewController.view.removeFromSuperview()
-        self.errorViewController.removeFromParent()
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.8, delay: 0.05 * Double(indexPath.row), animations: {
+            cell.alpha = 1
+        })
     }
 }
+

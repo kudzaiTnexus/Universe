@@ -11,13 +11,14 @@ import UIKit
 class PostsTableViewController: UniverseBaseTableViewController {
 
     private let viewModel = PostsViewModel()
-    private lazy var errorViewController = ErrorViewController()
-    
+
     private var posts: [Post] = [] {
         didSet {
             tableView.reloadData()
         }
     }
+    
+    // MARK: - View Life cycle
     
     func registerTableViewCells() {
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "\(PostTableViewCell.self)")
@@ -32,14 +33,14 @@ class PostsTableViewController: UniverseBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.hidesBackButton = true
-        
         self.tableView.separatorStyle = .none
-        self.title = "Posts"
+        self.title = NSLocalizedString("all.posts.title", comment: "")
         self.registerTableViewCells()
         
         self.errorViewController.delegate = self
     }
+    
+    // MARK: - Service Call
     
     func fetchPostsData() {
         self.showActivityIndicator()
@@ -50,16 +51,23 @@ class PostsTableViewController: UniverseBaseTableViewController {
             case .success(let posts):
                 self.posts = posts
                 self.hideActivityIndicator()
-            case .failure( _):
+            case .failure(let error):
                 self.hideActivityIndicator()
-                self.showErrorView()
+                self.showErrorView(with: error.message)
                 self.hideActivityIndicator()
             }
 
         }
     }
     
-    // MARK: - Table view data source
+    // MARK: - Error Handling
+    
+    override func onRetryTap() {
+        self.hideErrorView()
+        self.fetchPostsData()
+    }
+    
+    // MARK: - Table view data source and delegate calls
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -84,24 +92,4 @@ class PostsTableViewController: UniverseBaseTableViewController {
 
 }
 
-extension PostsTableViewController: RetryDelegate {
-    
-    func onRetryTap() {
-        self.hideErrorView()
-        self.fetchPostsData()
-    }
-    
-    func showErrorView() {
-        self.addChild(errorViewController)
-        self.errorViewController.view.frame = view.bounds
-        self.view.addSubview(errorViewController.view)
-        self.view.bringSubviewToFront(errorViewController.view)
-        self.errorViewController.didMove(toParent: self)
-    }
-    
-    func hideErrorView() {
-        self.errorViewController.willMove(toParent: nil)
-        self.errorViewController.view.removeFromSuperview()
-        self.errorViewController.removeFromParent()
-    }
-}
+

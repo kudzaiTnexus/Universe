@@ -38,7 +38,6 @@ class CommentTableViewCell: UITableViewCell {
         label.textColor = .black
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 0
-        label.textAlignment = .center
         
         return label
     }()
@@ -46,7 +45,7 @@ class CommentTableViewCell: UITableViewCell {
     private let authorEmailLabel: UILabel = {
         
         let label = UILabel()
-        label.textColor = .gray
+        label.textColor = UIColor.blue.withAlphaComponent(0.8)
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.numberOfLines = 0
         

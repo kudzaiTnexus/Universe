@@ -1,5 +1,5 @@
 //
-//  AuthorPostsTableViewController.swift
+//  UserPostsTableViewController.swift
 //  Universe-Interview
 //
 //  Created by Kudzaiishe Mhou on 2020/06/20.
@@ -8,16 +8,26 @@
 
 import UIKit
 
-class AuthorPostsTableViewController: UniverseBaseTableViewController {
+class UserPostsTableViewController: UniverseBaseTableViewController {
 
     private let viewModel = PostsViewModel()
-    var post: Post!
-    private lazy var errorViewController = ErrorViewController()
+    private var userId: Int!
     
     private var posts: [Post] = [] {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    // MARK: - View Life cycle
+    
+    init(with userId: Int) {
+        super.init(nibName: nil, bundle: nil)
+        self.userId = userId
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func registerTableViewCells() {
@@ -33,34 +43,41 @@ class AuthorPostsTableViewController: UniverseBaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.hidesBackButton = true
+        self.title = String(format: NSLocalizedString("user.posts", comment: ""), String(userId))
         
         self.tableView.separatorStyle = .none
-        self.title = "Posts"
         self.registerTableViewCells()
         
         self.errorViewController.delegate = self
     }
     
+    // MARK: - Service Call
+    
     func fetchPostsData() {
         self.showActivityIndicator()
         
-        self.viewModel.fetchAuthorPosts(by: post.userID) { result in
+        self.viewModel.fetchAuthorPosts(by: userId) { result in
             switch result {
                  
             case .success(let posts):
                 self.posts = posts
                 self.hideActivityIndicator()
-            case .failure( _):
+            case .failure(let error):
                 self.hideActivityIndicator()
-                self.showErrorView()
+                self.showErrorView(with: error.message)
                 self.hideActivityIndicator()
             }
-
         }
     }
     
-    // MARK: - Table view data source
+    // MARK: - Error Handling
+    
+    override func onRetryTap() {
+        self.hideErrorView()
+        self.fetchPostsData()
+    }
+    
+    // MARK: - Table view data source and delegate calls
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -69,7 +86,6 @@ class AuthorPostsTableViewController: UniverseBaseTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let postCell = tableView.dequeueReusableCell(withIdentifier: "\(PostTableViewCell.self)", for: indexPath) as! PostTableViewCell
@@ -85,24 +101,3 @@ class AuthorPostsTableViewController: UniverseBaseTableViewController {
 
 }
 
-extension AuthorPostsTableViewController: RetryDelegate {
-    
-    func onRetryTap() {
-        self.hideErrorView()
-        self.fetchPostsData()
-    }
-    
-    func showErrorView() {
-        self.addChild(errorViewController)
-        self.errorViewController.view.frame = view.bounds
-        self.view.addSubview(errorViewController.view)
-        self.view.bringSubviewToFront(errorViewController.view)
-        self.errorViewController.didMove(toParent: self)
-    }
-    
-    func hideErrorView() {
-        self.errorViewController.willMove(toParent: nil)
-        self.errorViewController.view.removeFromSuperview()
-        self.errorViewController.removeFromParent()
-    }
-}

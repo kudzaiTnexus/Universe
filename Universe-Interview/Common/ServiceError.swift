@@ -12,6 +12,7 @@ enum ServiceError: Error {
     case invalidURL
     case requestFailed
     case decodeError
+    case networkError
     
     var message: String {
         switch self {
@@ -23,6 +24,9 @@ enum ServiceError: Error {
                                      comment: "Request failure")
         case .decodeError:
             return NSLocalizedString("Decoding error",
+                                     comment: "Request failed")
+        case .networkError:
+            return NSLocalizedString("No Network error",
                                      comment: "Request failed")
         }
     }

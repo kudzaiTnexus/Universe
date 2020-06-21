@@ -11,9 +11,9 @@ import UIKit
 class PostDetailsViewController: UIViewController {
     
     private var post: Post!
-    
-    private var commentsTableViewController = CommentsTableViewController()
-        // MARK: - View components
+    private var commentsTableViewController: CommentsTableViewController!
+        
+    // MARK: - View components
     
     private var postNumberLabel: UILabel = {
         
@@ -62,6 +62,35 @@ class PostDetailsViewController: UIViewController {
         return label
     }()
     
+    private let showMoreButton: UIButton = {
+        
+        let button = UIButton(type: .system)
+        button.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.layer.cornerRadius = 8
+        button.tintColor = .white
+        button.backgroundColor = UIColor.orange.withAlphaComponent(0.8)
+        button.setTitle(NSLocalizedString("showmore.title", comment: ""), for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
+        button.layer.shadowRadius = 2.0
+        button.layer.shadowColor = UIColor.lightGray.cgColor
+        button.layer.shadowOpacity = 0.3
+        button.addTarget(self, action: #selector(onShowMoreButtonTap), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private let commentsView: UIView = {
+        let commentsView = UIView(frame: .zero)
+        
+        commentsView.translatesAutoresizingMaskIntoConstraints = false
+        return commentsView
+    }()
+    
     private let mainVerticalStackView: UIStackView = {
         
         let stackView = UIStackView()
@@ -88,91 +117,45 @@ class PostDetailsViewController: UIViewController {
         return stackView
     }()
     
-    private let commentsView: UIView = {
-        let commentsView = UIView(frame: .zero)
-        
-        commentsView.translatesAutoresizingMaskIntoConstraints = false
-        return commentsView
-    }()
-    
-    private let dividerLine: UIView = {
-        let view = UIView(frame: .zero)
-        view.heightAnchor.constraint(equalToConstant: 2).isActive = true
-        view.backgroundColor = UIColor.orange
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let showMoreButton: UIButton = {
-        
-        let button = UIButton(type: .system)
-        button.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        button.contentHorizontalAlignment = .center
-        button.contentVerticalAlignment = .center
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button.layer.cornerRadius = 8
-        button.tintColor = .white
-        button.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
-        button.setTitle("Show More", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
-        button.layer.shadowRadius = 2.0
-        button.layer.shadowColor = UIColor.lightGray.cgColor
-        button.layer.shadowOpacity = 0.3
-        button.addTarget(self, action: #selector(onShowMoreButtonTap), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private let moreButtonHorizontalStackView: UIStackView = {
-        
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .trailing
-        stackView.distribution = .fill
-        
-        return stackView
-    }()
+     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = NSLocalizedString("comments.title", comment: "")
+        self.commentsTableViewController = CommentsTableViewController(with: String(post.id))
+        
         self.setupView()
     }
     
+    @objc func onShowMoreButtonTap(sender: UIButton) {
+        let viewController = UserPostsTableViewController(with: post.userID)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+}
+
+
+extension PostDetailsViewController {
+
     func setupView() {
+        
+        view.backgroundColor = UIColor.white
         
         mainVerticalStackView.addArrangedSubview(titleLabel)
         mainVerticalStackView.addArrangedSubview(bodyLabel)
-        mainVerticalStackView.addArrangedSubview(dividerLine)
-        
-        self.moreButtonHorizontalStackView.addArrangedSubview(UIView(frame: .zero))
-        self.moreButtonHorizontalStackView.addArrangedSubview(showMoreButton)
-        self.mainVerticalStackView.addArrangedSubview(moreButtonHorizontalStackView)
+
+        mainVerticalStackView.setCustomSpacing(12, after: bodyLabel)
+        mainVerticalStackView.addArrangedSubview(showMoreButton)
         
         horizontalStackView.addArrangedSubview(postNumberLabel)
         horizontalStackView.addArrangedSubview(mainVerticalStackView)
         
         view.addSubview(horizontalStackView)
         view.addSubview(commentsView)
-        self.setupConstraints()
+        self.commentsView.addSubview(self.commentsTableViewController.view)
         
-        view.backgroundColor = UIColor.white
-        
-        self.commentsTableViewController.tableView.showsVerticalScrollIndicator = false
-        self.commentsTableViewController.view.translatesAutoresizingMaskIntoConstraints = false
-
-        setupCommentsView()
-    }
-    
-    func configureViewWith(post: Post, and index: Int) {
-        self.postNumberLabel.text = String(index)
-        self.titleLabel.text = post.title.capitalized
-        self.bodyLabel.text = post.body
-        self.post = post
-        self.commentsTableViewController.post = post
+        setupConstraints()
     }
     
     func setupConstraints() {
@@ -187,23 +170,16 @@ class PostDetailsViewController: UIViewController {
         commentsView.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor).isActive = true
         commentsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         commentsView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        self.commentsTableViewController.tableView.layoutPinToSuperviewEdges()
 
     }
     
-    func setupCommentsView() {
-       
-        self.commentsView.addSubview(self.commentsTableViewController.view)
-        self.commentsTableViewController.tableView.layoutPinToSuperviewEdges()
-    }
-    
-    
-    @objc func onShowMoreButtonTap(sender: UIButton) {
-        let viewController = AuthorPostsTableViewController()
-        viewController.post = post
-        self.navigationController?.pushViewController(viewController, animated: true)
+    func configureViewWith(post: Post, and index: Int) {
+        self.postNumberLabel.text = String(index)
+        self.titleLabel.text = post.title.capitalized
+        self.bodyLabel.text = post.body
+        self.post = post
     }
 
 }
-
-
-

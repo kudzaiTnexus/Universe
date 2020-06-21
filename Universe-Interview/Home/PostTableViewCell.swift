@@ -44,8 +44,8 @@ class PostTableViewCell: UITableViewCell {
     private let bodyLabel: UILabel = {
         
         let label = UILabel()
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 12, weight: .ultraLight)
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 12, weight: .regular)
         label.numberOfLines = 0
         label.textAlignment = .justified
         label.lineBreakMode = .byWordWrapping

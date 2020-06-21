@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		764D2442249F12B7002E4B82 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764D2441249F12B7002E4B82 /* Reachability.swift */; };
+		764D2444249F2028002E4B82 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 764D2443249F2028002E4B82 /* Localizable.strings */; };
 		7677A8E4249E387E001D4FE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A8E3249E387E001D4FE6 /* AppDelegate.swift */; };
 		7677A8E6249E387E001D4FE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A8E5249E387E001D4FE6 /* SceneDelegate.swift */; };
 		7677A8E8249E387E001D4FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A8E7249E387E001D4FE6 /* ViewController.swift */; };
@@ -33,7 +35,7 @@
 		7677A940249E6D56001D4FE6 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A93F249E6D56001D4FE6 /* CommentService.swift */; };
 		7677A942249E75DF001D4FE6 /* ServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A941249E75DF001D4FE6 /* ServiceClient.swift */; };
 		7677A946249E7EEC001D4FE6 /* UIview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A945249E7EEC001D4FE6 /* UIview+Extension.swift */; };
-		7677A949249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A948249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift */; };
+		7677A949249E9BE2001D4FE6 /* UserPostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677A948249E9BE2001D4FE6 /* UserPostsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		764D2441249F12B7002E4B82 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		764D2443249F2028002E4B82 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7677A8E0249E387E001D4FE6 /* Universe-Interview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Universe-Interview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7677A8E3249E387E001D4FE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7677A8E5249E387E001D4FE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,7 +90,7 @@
 		7677A93F249E6D56001D4FE6 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		7677A941249E75DF001D4FE6 /* ServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceClient.swift; sourceTree = "<group>"; };
 		7677A945249E7EEC001D4FE6 /* UIview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIview+Extension.swift"; sourceTree = "<group>"; };
-		7677A948249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPostsTableViewController.swift; sourceTree = "<group>"; };
+		7677A948249E9BE2001D4FE6 /* UserPostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 				7677A8E5249E387E001D4FE6 /* SceneDelegate.swift */,
 				7677A8E7249E387E001D4FE6 /* ViewController.swift */,
 				7677A8E9249E387E001D4FE6 /* Main.storyboard */,
+				764D2443249F2028002E4B82 /* Localizable.strings */,
 				7677A8EC249E3881001D4FE6 /* Assets.xcassets */,
 				7677A8EE249E3881001D4FE6 /* LaunchScreen.storyboard */,
 				7677A8F1249E3881001D4FE6 /* Info.plist */,
@@ -170,31 +175,6 @@
 			path = "Universe-InterviewUITests";
 			sourceTree = "<group>";
 		};
-		7677A913249E388F001D4FE6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7677A916249E39D1001D4FE6 /* PostsTableViewController.swift */,
-				7677A91B249E3AC9001D4FE6 /* PostTableViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		7677A914249E3898001D4FE6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7677A91D249E3B4F001D4FE6 /* Post.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		7677A915249E389C001D4FE6 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				7677A91F249E3D4B001D4FE6 /* PostsViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		7677A918249E3A48001D4FE6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +184,7 @@
 				7677A931249E47C1001D4FE6 /* URLSession+Extension.swift */,
 				7677A941249E75DF001D4FE6 /* ServiceClient.swift */,
 				7677A945249E7EEC001D4FE6 /* UIview+Extension.swift */,
+				764D2441249F12B7002E4B82 /* Reachability.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -220,9 +201,10 @@
 		7677A928249E3FA6001D4FE6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				7677A915249E389C001D4FE6 /* ViewModel */,
-				7677A914249E3898001D4FE6 /* Model */,
-				7677A913249E388F001D4FE6 /* View */,
+				7677A91D249E3B4F001D4FE6 /* Post.swift */,
+				7677A916249E39D1001D4FE6 /* PostsTableViewController.swift */,
+				7677A91B249E3AC9001D4FE6 /* PostTableViewCell.swift */,
+				7677A91F249E3D4B001D4FE6 /* PostsViewModel.swift */,
 				7677A92C249E40C0001D4FE6 /* PostService.swift */,
 			);
 			path = Home;
@@ -252,7 +234,7 @@
 		7677A947249E98A7001D4FE6 /* AuthorPosts */ = {
 			isa = PBXGroup;
 			children = (
-				7677A948249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift */,
+				7677A948249E9BE2001D4FE6 /* UserPostsTableViewController.swift */,
 			);
 			path = AuthorPosts;
 			sourceTree = "<group>";
@@ -362,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7677A8F0249E3881001D4FE6 /* LaunchScreen.storyboard in Resources */,
+				764D2444249F2028002E4B82 /* Localizable.strings in Resources */,
 				7677A8ED249E3881001D4FE6 /* Assets.xcassets in Resources */,
 				7677A8EB249E387E001D4FE6 /* Main.storyboard in Resources */,
 			);
@@ -388,7 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7677A949249E9BE2001D4FE6 /* AuthorPostsTableViewController.swift in Sources */,
+				7677A949249E9BE2001D4FE6 /* UserPostsTableViewController.swift in Sources */,
 				7677A8E8249E387E001D4FE6 /* ViewController.swift in Sources */,
 				7677A91C249E3AC9001D4FE6 /* PostTableViewCell.swift in Sources */,
 				7677A932249E47C1001D4FE6 /* URLSession+Extension.swift in Sources */,
@@ -403,6 +386,7 @@
 				7677A942249E75DF001D4FE6 /* ServiceClient.swift in Sources */,
 				7677A930249E46F8001D4FE6 /* ServiceError.swift in Sources */,
 				7677A93A249E6648001D4FE6 /* Comment.swift in Sources */,
+				764D2442249F12B7002E4B82 /* Reachability.swift in Sources */,
 				7677A925249E3DDA001D4FE6 /* RetryDelegate.swift in Sources */,
 				7677A93E249E67EE001D4FE6 /* CommentTableViewCell.swift in Sources */,
 				7677A917249E39D1001D4FE6 /* PostsTableViewController.swift in Sources */,

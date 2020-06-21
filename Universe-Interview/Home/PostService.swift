@@ -10,7 +10,6 @@ import Foundation
 
 protocol PostService {
     func fetchPosts(completion:@escaping (_ result: Result<[Post], ServiceError>) -> Void)
-    //func fetchPostDetails(completion:@escaping (_ result: Result<Post, Swift.Error>) -> Void))
 }
 
 struct PostServiceImplementation: PostService, ServiceClient {

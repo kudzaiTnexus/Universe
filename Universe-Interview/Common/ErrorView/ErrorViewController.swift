@@ -25,7 +25,7 @@ class ErrorViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .light)
         label.textColor = .red
-        label.text = NSLocalizedString("errorTitle", comment: "")
+        label.text = "Something went wrong"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -43,7 +43,7 @@ class ErrorViewController: UIViewController {
         button.tintColor = .blue
         button.setImage(UIImage(systemName: "gobackward"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
-        button.setTitle("Retry", for: .normal)
+        button.setTitle(NSLocalizedString("error.retry", comment: ""), for: .normal)
         let imageSize: CGSize = button.imageView!.image!.size
         button.titleEdgeInsets = UIEdgeInsets(top: 26,
                                               left: -imageSize.width,
@@ -83,14 +83,23 @@ class ErrorViewController: UIViewController {
     }()
     
     weak var delegate: RetryDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setupView()
     }
     
+    @objc func retryTapped() {
+        delegate?.onRetryTap()
+    }
+}
+
+extension ErrorViewController {
+    
     func setupView() {
+        
+        self.view.backgroundColor = .white
         
         verticalStackView.addArrangedSubview(errorAvatar)
         verticalStackView.addArrangedSubview(errorLabel)
@@ -100,6 +109,10 @@ class ErrorViewController: UIViewController {
         
         self.view.addSubview(stackView)
         
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -20).isActive = true
@@ -108,11 +121,9 @@ class ErrorViewController: UIViewController {
         
         errorAvatar.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-       // self.view.backgroundColor = .white
     }
-
-    @objc func retryTapped() {
-        delegate?.onRetryTap()
+    
+    func configureView(with errorTitle: String) {
+        errorLabel.text = errorTitle
     }
 }

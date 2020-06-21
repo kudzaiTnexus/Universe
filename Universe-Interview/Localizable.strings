@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Universe-Interview
+
+  Created by Kudzaiishe Mhou on 2020/06/21.
+  Copyright © 2020 Kudzaiishe Mhou. All rights reserved.
+*/
+
+// Posts
+
+"all.posts.title" = "All Posts";
+"comments.title" = "Comments";
+"showmore.title" = "Show More";
+"user.posts" = "User %@ Posts";
+"error.retry" = "Retry";

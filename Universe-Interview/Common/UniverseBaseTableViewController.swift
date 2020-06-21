@@ -10,11 +10,34 @@ import Foundation
 import UIKit
 
 class UniverseBaseTableViewController: UITableViewController {
-
+    
     var activityView: UIActivityIndicatorView?
+    
+    lazy var errorViewController = ErrorViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+}
+
+extension UniverseBaseTableViewController: RetryDelegate {
+    
+    @objc func onRetryTap() {}
+    
+    func showErrorView(with errorTitle: String) {
+        errorViewController.configureView(with: errorTitle)
+        self.addChild(errorViewController)
+        self.errorViewController.view.frame = view.bounds
+        self.view.addSubview(errorViewController.view)
+        self.view.bringSubviewToFront(errorViewController.view)
+        self.errorViewController.didMove(toParent: self)
+    }
+    
+    func hideErrorView() {
+        self.errorViewController.willMove(toParent: nil)
+        self.errorViewController.view.removeFromSuperview()
+        self.errorViewController.removeFromParent()
     }
 }
 
