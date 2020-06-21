@@ -12,7 +12,11 @@ class ErrorViewController: UIViewController {
     
     private let errorAvatar: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "exclamationmark.icloud")
+        if #available(iOS 13.0, *) {
+            imageView.image = UIImage(systemName: "exclamationmark.icloud")
+        } else {
+            imageView.image = UIImage(named: "cloud")
+        }
         imageView.clipsToBounds = true
         imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
@@ -41,7 +45,11 @@ class ErrorViewController: UIViewController {
         button.contentVerticalAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .blue
-        button.setImage(UIImage(systemName: "gobackward"), for: .normal)
+        if #available(iOS 13.0, *) {
+            button.setImage(UIImage(systemName: "gobackward"), for: .normal)
+        } else {
+            button.setImage(UIImage(named: "backArrow"), for: .normal)
+        }
         button.imageView?.contentMode = .scaleAspectFill
         button.setTitle(NSLocalizedString("error.retry", comment: ""), for: .normal)
         let imageSize: CGSize = button.imageView!.image!.size

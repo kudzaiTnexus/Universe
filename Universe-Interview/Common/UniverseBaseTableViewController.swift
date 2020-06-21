@@ -44,7 +44,11 @@ extension UniverseBaseTableViewController: RetryDelegate {
 extension UniverseBaseTableViewController {
     
     func showActivityIndicator() {
-        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        if #available(iOS 13.0, *) {
+            activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        } else {
+            activityView = UIActivityIndicatorView(style:  UIActivityIndicatorView.Style.gray)
+        }
         activityView?.center = self.view.center
         self.view.addSubview(activityView!)
         activityView?.startAnimating()
